@@ -1,0 +1,23 @@
+services:
+  tic-tac-toe:
+    image: node:20-alpine
+    container_name: tic-tac-toe
+    hostname: tic-tac-toe
+    restart: unless-stopped
+    tty: true
+    working_dir: /usr/local/app
+    volumes:
+      - /mnt/Gallery/developments/React Projects/React course/07-tic-tac-toe-starting-project:/usr/local/app
+    command: >
+      sh -c '
+        npm run dev
+      '
+    ports:
+      - "5173:5173"
+    networks:
+      - tic-tac-toe
+
+networks:
+  tic-tac-toe:
+    driver: bridge
+    name: tic-tac-toe
